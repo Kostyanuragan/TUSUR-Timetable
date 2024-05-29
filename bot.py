@@ -45,11 +45,13 @@ bot = telebot.TeleBot(config.TOKEN)
 
 @bot.message_handler(commands=['start'])
 def welcome_message(message):
+    welcome_img = open('welcome.png','rb')
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     item1 = types.KeyboardButton("Узнать расписание на сегодня")
     markup.add(item1)
     bot.send_message(message.chat.id, 'Приветствую, {0.first_name}.\n Я - бот <b>{1.first_name}</b>.\nЧтобы узнать расписание введите "Узнать расписание на сегодня" или нажмите на кнопку ниже'.format(message.from_user, bot.get_me()),
                      parse_mode='html', reply_markup=markup)
+    bot.send_photo(message.chat.id, welcome_img)
     
 @bot.message_handler(func=lambda message: True)
 def timefind_out_the_schedule(message):
