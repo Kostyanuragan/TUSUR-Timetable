@@ -55,7 +55,7 @@ def welcome_message(message):
 def timefind_out_the_schedule(message):
     if message.text=='Узнать расписание на сегодня':
         markup = telebot.types.ReplyKeyboardRemove()
-        bot.send_message(message.chat.id, 'Введи номер группы',reply_markup=markup)
+        bot.send_message(message.chat.id, 'Введите номер группы',reply_markup=markup)
         bot.register_next_step_handler(message,handle_group_number)
     else:
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
